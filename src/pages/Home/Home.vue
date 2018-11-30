@@ -41,14 +41,22 @@
   import Homepage from '../Homepage/Homepage.vue'
   export default {
     mounted () {
-        new BScroll('.headerNav',{
+      this.$nextTick(() => {
+        this._navScroll();
+      })
+
+    },
+    components: {
+      Homepage
+    },
+    methods: {
+      _navScroll () {
+        const navScroll = new BScroll('.headerNav',{
           scrollX: true,
           scrollY: false,
           click: true
         });
-    },
-    components: {
-      Homepage
+      }
     }
   }
 </script>
@@ -58,10 +66,14 @@
 @import "../../common/stylus/mixins.styl"
   .home
     height: 100%
-    /*background-color: skyblue*/
     .header
       width: 100%
       height px2rem(148)
+      position fixed
+      top: 0
+      left: 0
+      background-color: #fff
+      z-index 5
       .headerTop
         height px2rem(88)
         display flex
@@ -103,7 +115,7 @@
           margin-top px2rem(8)
           margin-left px2rem(16)
       .headerNav
-        position relative
+
         height px2rem(60)
         .navList
           width 170%

@@ -37,7 +37,9 @@
  footer
    height px2rem(100)
    width: 100%
-   position relative
+   position fixed
+   bottom 0
+   left: 0
   .footerList
     width: 100%
     height 100%
@@ -45,7 +47,6 @@
     justify-content space-around
     align-items center
     background-color: #e8e8e8
-
     >li
       height: 100%
       flex 1

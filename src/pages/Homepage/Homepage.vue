@@ -1,149 +1,149 @@
 <template>
-  <div>
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="(banner ,index) in homeData.focusList" :key="index">
-          <img :src="banner.picUrl" alt="">
-        </div>
-        <!--<div class="swiper-slide">-->
-          <!--<img src="../../common/images/2ea9419c837150763b6efaa008bbf816.jpg" alt="">-->
-        <!--</div>-->
-        <!--<div class="swiper-slide">-->
-          <!--<img src="../../common/images/07fb5978447fdc45f9ca8b8d140a18dd.jpg" alt="">-->
-        <!--</div>-->
-        <!--<div class="swiper-slide">-->
-          <!--<img src="../../common/images/903cde6cb7332681b8231387a22a5ab1.jpg" alt="">-->
-        <!--</div>-->
-        <!--<div class="swiper-slide">-->
-          <!--<img src="../../common/images/2957fe22054fa1da4041b400a99b130b.jpg" alt="">-->
-        <!--</div>-->
-        <!--<div class="swiper-slide">-->
-          <!--<img src="../../common/images/ff5b7f41f874315e8ec265196288f4b5.jpg" alt="">-->
-        <!--</div>-->
-        <!--<div class="swiper-slide">-->
-          <!--<img src="../../common/images/bbb8c9928e749604fab0f154331da294.jpg" alt="">-->
-        <!--</div>-->
-        <!--<div class="swiper-slide">-->
-          <!--<img src="../../common/images/be02985067b3a32b3bc28dd41033bd16.jpg" alt="">-->
-        <!--</div>-->
-
-
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
-    <ul class="assure">
-      <li>
-        <img src="../../common/images/cae45612b8aae577d8bd73338e2fc02c.png" >
-        <span>网易自营品牌</span>
-      </li>
-      <li>
-        <img src="../../common/images/cae45612b8aae577d8bd73338e2fc02c.png" >
-        <span>30天无忧退货</span>
-      </li>
-      <li>
-        <img src="../../common/images/cae45612b8aae577d8bd73338e2fc02c.png" >
-        <span>48小时快速退款</span>
-      </li>
-    </ul>
-    <piece/>
-    <div class="brandShop">
-      <div class="brandHeader">
-        <span>品牌制造直供商</span>
-        <img src="../../common/images/go2-3e511991d6.png">
-      </div>
-      <ul class="shopDetail">
+  <div class="homeContent">
+    <div class="content">
+      <Banner/>
+      <ul class="assure">
         <li>
-        <img src="../../common/images/bcca932aeb9d818dcf6d3a4804f7311b.png">
-        <div class="shopVender">
-          <span>Ck制造商</span> <br>
-          <span>25元起</span>
-        </div>
-      </li>
+          <img src="../../common/images/cae45612b8aae577d8bd73338e2fc02c.png">
+          <span>网易自营品牌</span>
+        </li>
         <li>
-          <img src="../../common/images/bcca932aeb9d818dcf6d3a4804f7311b.png">
-          <div class="shopVender">
-            <span>Ck制造商</span> <br>
-            <span>25元起</span>
-          </div>
+          <img src="../../common/images/cae45612b8aae577d8bd73338e2fc02c.png">
+          <span>30天无忧退货</span>
+        </li>
+        <li>
+          <img src="../../common/images/cae45612b8aae577d8bd73338e2fc02c.png">
+          <span>48小时快速退款</span>
         </li>
       </ul>
+      <Piece/>
+      <div class="brandShop">
+        <div class="brandHeader">
+          <span>品牌制造直供商</span>
+          <img src="../../common/images/go2-3e511991d6.png">
+        </div>
+        <ul class="shopDetail">
+          <li v-for="(tag ,index) in getTagList" :key="index">
+            <img :src="tag.picUrl">
+            <div class="shopVender">
+              <span>{{tag.name}}</span> <br>
+              <span>{{tag.floorPrice}}元起</span>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+      <Piece/>
+      <Board title="新品首发"/>
+      <shopNav :itemList="homeData.newItemNewUserList"/>
+      <Piece/>
+      <Board title="人气推荐"/>
+      <shopNav :itemList="homeData.popularItemList"/>
+      <div class="box"></div>
     </div>
   </div>
 </template>
 
 <script>
   import Swiper from 'swiper'
-  import {mapState} from 'vuex'
+  import {mapState, mapGetters} from 'vuex'
+  import BScroll from 'better-scroll'
+  import Banner from '../../components/Banner/Banner.vue'
+  import Board from '../../components/Board/Board.vue'
+  import shopNav from '../../components/shopNav/shopNav.vue'
   export default {
-    mounted () {
-      this.$store.dispatch('getHomeData', () => {//获取轮播图数据
-        this.$nextTick(() => {
-          new Swiper ('.swiper-container', {
-            loop: true, // 循环模式选项
-            // 如果需要分页器
-            pagination: {
-              el: '.swiper-pagination',
-            },
-          });
-        })
-      });
-
+    components : {
+      Banner,
+      Board,
+      shopNav, //传入itemList
 
     },
+    mounted () {
+      //获取home数据,初始化content滚动
+      this._contentScroll()
+    },
     computed: {
-      ...mapState(['homeData'])
+      ...mapState(['homeData']),
+      ...mapGetters(['getTagList'])
+    },
+    methods: {
+      //初始化conten滚动及获取home数据
+      _contentScroll () {
+        this.$store.dispatch('getHomeData', () => {
+          this.$nextTick(() => {
+            new BScroll('.homeContent',{
+              scrollX: false,
+              click: true
+            });
+          });
+
+        });
+      }
     }
   }
 </script>
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus" scoped>
   @import "../../common/stylus/mixins.styl"
-  .swiper-container
-    .swiper-pagination-bullet
-      border-radius 0
-      width px2rem(40)
-      height px2rem(6)
-      &.swiper-pagination-bullet-active
+.homeContent
+  width: 100%
+  height px2rem(1086)
+  overflow hidden
+  .content
+    width: 100%
+    height: 100%
+    position absolute
+    top 0
+    left 0
+    padding-top px2rem(148)
+    .box
+      width: 100%
+      height: 500px
+      background-color: skyblue
+    .assure
+      display flex
+      justify-content space-around
+      li
+        line-height px2rem(72)
+        img
+          vertical-align middle
+        span
+          font-size px2rem(22)
+    .brandShop
+      height px2rem(554)
+      padding-bottom px2rem(30)
+      .brandHeader
+        height px2rem(90)
+        line-height px2rem(90)
+        text-align center
         background-color: #fff
-    .swiper-slide img
-        width 100%
-  .assure
-    display flex
-    justify-content space-around
-    li
-      line-height px2rem(72)
-      img
-        vertical-align middle
-      span
-        font-size px2rem(22)
-  .brandShop
-    height px2rem(554)
-    /*background-color: #f4f4f4*/
-    .brandHeader
-      height px2rem(90)
-      line-height px2rem(90)
-      text-align center
-      background-color: #fff
-      span
-        font-size px2rem(34)
-      img
-        margin-left px2rem(6)
+        span
+          font-size px2rem(34)
+        img
+          margin-left px2rem(6)
+          position relative
+          top: px2rem(4)
+
+    .shopDetail
+      clearFix()
+      padding 0 px2rem(5)
+      li
+        background-color: #f4f4f4
         position relative
-        top: px2rem(4)
-
-   .shopDetail
-     clearFix()
-     padding 0 px2rem(10) px2rem(30)
-     li
-       background-color: #f4f4f4
-       position relative
-       float left
-       margin-left px2rem(10)
-       .shopVender
-         position absolute
-         top: px2rem(10)
-         left: px2rem(10)
-         font-size px2rem(28)
-
+        float left
+        margin-left px2rem(10)
+        img
+          width px2rem(355)
+          height px2rem(236)
+        &:nth-child(3)
+          margin-top px2rem(15)
+        &:nth-child(4)
+          margin-top px2rem(15)
+        .shopVender
+          position absolute
+          top: px2rem(10)
+          left: px2rem(10)
+          font-size px2rem(28)
 
 
 </style>
