@@ -11,8 +11,8 @@
       </div>
       <div class="headerNav">
         <ul class="navList">
-          <li :class="{active: $route.path === '/home/homepage'}">
-            <router-link to="/home/homepage">
+          <li :class="{active: $route.path === '/home'}">
+            <router-link to="/home">
               <span>推荐</span>
             </router-link>
           </li>
@@ -32,7 +32,7 @@
         </div>
       </div>
     </header>
-    <Homepage/>
+      <Homepage/>
   </section>
 </template>
 
@@ -115,7 +115,6 @@
           margin-top px2rem(8)
           margin-left px2rem(16)
       .headerNav
-
         height px2rem(60)
         .navList
           width 170%

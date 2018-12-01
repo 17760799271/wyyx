@@ -14,28 +14,29 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+/*黑色购物车*/
 .icon-gouwuchekong:before { content: "\e601"; }
 
 .icon-yuanquan:before { content: "\e620"; }
 
 .icon-jiantouyou:before { content: "\e603"; }
-
+/*手机*/
 .icon-shouji:before { content: "\e62d"; }
-
+/*footer第三个分类*/
 .icon-fenlei:before { content: "\e602"; }
 
 .icon-youxiang:before { content: "\e615"; }
 
-.icon-QQ:before { content: "\e786"; }
 
+/*方块*/
 .icon-fangkuai:before { content: "\e610"; }
 
 .icon-icon-:before { content: "\e7b2"; }
 
-.icon-weibo:before { content: "\e63c"; }
-
-.icon-weixin:before { content: "\e661"; }
-
+/*首页*/
 .icon-shouye2:before { content: "\e614"; }
 
+/*登录页3图标*/
+.icon-QQ:before { content: "\e786"; }
+.icon-weibo:before { content: "\e63c"; }
+.icon-weixin:before { content: "\e661"; }

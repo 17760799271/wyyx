@@ -27,7 +27,7 @@
       goto(path) {
         this.$router.push(path)
       },
-    }
+    },
   }
 </script>
 

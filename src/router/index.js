@@ -16,12 +16,12 @@ export default new VueRouter({
     {
       path: '/home',
       component: Home,
-      children: [
-        {
-          path: '/home/homepage',
-          component: Homepage,
-        }
-      ]
+      // children: [
+      //   {
+      //     path: '/home/homepage',
+      //     component: Homepage,
+      //   }
+      // ]
     },
     {
       path: '/discernGoods',
