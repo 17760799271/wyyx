@@ -151,6 +151,7 @@
   #discernGoods
     width 100%
     height: px2rem(1086)
+    padding-top px2rem(97)
     .discernGoods
       width 100%
       padding-top px2rem(97)
@@ -265,7 +266,8 @@
           .card
             height px2rem(410)
             width px2rem(580)
-            background-color: #fafafa
+            background-image: url("../../common/images/qipao.png")
+            background-repeat no-repeat
             padding px2rem(38) px2rem(40) px2rem(79)
             box-sizing border-box
             font-size px2rem(30)

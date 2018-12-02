@@ -2,12 +2,14 @@
 import {
   reqHomeData,
   reqTopicData,
+  reqCategoryData,
   
 } from '../api'
 import {
   GET_HOME_DATA,
   GET_BANNER_DATA,
   GET_TOPIC_DATA,
+  GET_CATEGORY_DATA,
   
 } from './mutation-type'
 export default {
@@ -37,5 +39,15 @@ export default {
       commit(GET_TOPIC_DATA, {topicData});
       typeof cb === 'function' && cb();
     }
-  }
+  },
+  //请求分类数据
+  async getCategoryData ({commit},cb) {
+    const res = await reqCategoryData();
+    if (res.code === 0) {
+      const categoryData = res.data;
+      commit(GET_CATEGORY_DATA, {categoryData});
+      typeof cb === 'function' && cb();
+    }
+  },
+  
 }

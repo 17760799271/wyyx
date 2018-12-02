@@ -3,7 +3,8 @@ import {
   GET_HOME_DATA,
   GET_BANNER_DATA,
   GET_TOPIC_DATA,
-
+  GET_CATEGORY_DATA,
+  
 } from './mutation-type'
 
 export default {
@@ -19,5 +20,9 @@ export default {
   //获取识物数据
   [GET_TOPIC_DATA] (state,{topicData}) {
     state.topicData = topicData;
+  },
+  //获取分类数据
+  [GET_CATEGORY_DATA] (state,{categoryData}) {
+    state.categoryData = categoryData;
   },
 }

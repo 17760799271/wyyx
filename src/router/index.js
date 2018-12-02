@@ -16,6 +16,9 @@ export default new VueRouter({
     {
       path: '/home',
       component: Home,
+      meta: {
+        isShowFooter: true
+      },
       // children: [
       //   {
       //     path: '/home/homepage',
@@ -26,14 +29,23 @@ export default new VueRouter({
     {
       path: '/discernGoods',
       component: DiscernGoods,
+      meta: {
+        isShowFooter: true
+      },
     },
     {
       path: '/category',
       component: Category,
+      meta: {
+        isShowFooter: true
+      },
     },
     {
       path: '/cart',
       component: Cart,
+      meta: {
+        isShowFooter: true
+      },
     },
     {
       path: '/personal',

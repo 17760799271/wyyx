@@ -19,7 +19,8 @@
       "level": null,
       "name": "推荐专区",
       "showIndex": 9,
-      "subCateList": [{
+      "subCateList": [
+        {
         "bannerUrl": "http://yanxuan.nosdn.127.net/1fa42bd292337aaaf80612b6e208099b.png",
         "extra": null,
         "frontDesc": "",
@@ -35,7 +36,8 @@
         "type": 3,
         "wapBannerUrl": "http://yanxuan.nosdn.127.net/1fa42bd292337aaaf80612b6e208099b.png",
         "wapExpandPicTargetUrl": ""
-      }, {
+      },
+        {
         "bannerUrl": "http://yanxuan.nosdn.127.net/067c602f11acdbc766a35e2ba516a517.png",
         "extra": null,
         "frontDesc": "",
@@ -51,7 +53,8 @@
         "type": 3,
         "wapBannerUrl": "http://yanxuan.nosdn.127.net/067c602f11acdbc766a35e2ba516a517.png",
         "wapExpandPicTargetUrl": ""
-      }, {
+      },
+        {
         "bannerUrl": "http://yanxuan.nosdn.127.net/203f00eee943cbd3e46471d097a5ab79.png",
         "extra": null,
         "frontDesc": "",
@@ -67,7 +70,8 @@
         "type": 3,
         "wapBannerUrl": "http://yanxuan.nosdn.127.net/203f00eee943cbd3e46471d097a5ab79.png",
         "wapExpandPicTargetUrl": ""
-      }, {
+      },
+        {
         "bannerUrl": "http://yanxuan.nosdn.127.net/7e71b041939a8785c038484dba48a500.png",
         "extra": null,
         "frontDesc": "",
@@ -83,7 +87,8 @@
         "type": 3,
         "wapBannerUrl": "http://yanxuan.nosdn.127.net/7e71b041939a8785c038484dba48a500.png",
         "wapExpandPicTargetUrl": ""
-      }, {
+      },
+        {
         "bannerUrl": "http://yanxuan.nosdn.127.net/0822dcdac7803df99a4f428115ba7640.png",
         "extra": null,
         "frontDesc": "",
@@ -99,7 +104,8 @@
         "type": 3,
         "wapBannerUrl": "http://yanxuan.nosdn.127.net/0822dcdac7803df99a4f428115ba7640.png",
         "wapExpandPicTargetUrl": ""
-      }, {
+      },
+        {
         "bannerUrl": "http://yanxuan.nosdn.127.net/fd9c24de738834d53a233a2ac6010e9a.jpeg",
         "extra": null,
         "frontDesc": "",
@@ -115,7 +121,8 @@
         "type": 3,
         "wapBannerUrl": "http://yanxuan.nosdn.127.net/fd9c24de738834d53a233a2ac6010e9a.jpeg",
         "wapExpandPicTargetUrl": ""
-      }],
+      }
+      ],
       "superCategoryId": 0,
       "type": 1,
       "wapBannerUrl": "http://yanxuan.nosdn.127.net/135cfb8a563c983af4710a24f3b34f85.jpg",

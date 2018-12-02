@@ -14,6 +14,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 /*黑色购物车*/
 .icon-gouwuchekong:before { content: "\e601"; }
 
@@ -24,7 +25,7 @@
 .icon-shouji:before { content: "\e62d"; }
 /*footer第三个分类*/
 .icon-fenlei:before { content: "\e602"; }
-
+/*//邮箱*/
 .icon-youxiang:before { content: "\e615"; }
 
 

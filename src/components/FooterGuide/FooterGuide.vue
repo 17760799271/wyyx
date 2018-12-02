@@ -46,7 +46,7 @@
     display flex
     justify-content space-around
     align-items center
-    background-color: #e8e8e8
+    background-color: #ffffff
     >li
       height: 100%
       flex 1

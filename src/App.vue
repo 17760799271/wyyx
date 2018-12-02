@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <router-view/>
-    <FooterGuide/>
+    <FooterGuide v-if="$route.meta.isShowFooter"/>
   </div>
 </template>
 
@@ -21,7 +21,6 @@
   .app
     width: 100%
     height: 100%
-    padding-bottom px2rem(100)
     box-sizing border-box
     overflow hidden
 </style>

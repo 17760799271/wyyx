@@ -7,7 +7,7 @@
           <i class="loupe"></i>
           <span>搜索商品，共10719款好物</span>
         </div>
-        <button class="btn">登录</button>
+        <button class="btn" @click="$router.push('/personal')">登录</button>
       </div>
       <div class="headerNav">
         <ul class="navList">

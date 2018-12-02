@@ -162,13 +162,13 @@
   width: 100%
   height px2rem(1086)
   overflow hidden
+  padding-top px2rem(148)
   .content
     width: 100%
     position absolute
-    top 0
-    left 0
+    top: 0
+    left: 0
     padding-top px2rem(148)
-    padding-bottom px2rem(100)
     .box
       width: 100%
       height: px2rem(100)
