@@ -8,9 +8,19 @@
 <script>
   import FooterGuide from './components/FooterGuide/FooterGuide.vue'
   export default {
+    mounted () {
+      this.initFooterClass();
+    },
     components: {
       FooterGuide,
-
+    },
+    methods: {
+      initFooterClass () {
+        if (this.$route.path != '/home/homepage') {
+          console.log(1111);
+          this.$store.state.homePath = false;
+        }
+      }
     }
   }
 </script>

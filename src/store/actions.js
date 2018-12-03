@@ -10,6 +10,7 @@ import {
   GET_BANNER_DATA,
   GET_TOPIC_DATA,
   GET_CATEGORY_DATA,
+  GET_CATELIST_DATA,
   
 } from './mutation-type'
 export default {
@@ -49,5 +50,21 @@ export default {
       typeof cb === 'function' && cb();
     }
   },
-  
+  //获取首页nav数据
+  async getCateListData ({commit},cb) {
+    const res = await reqHomeData();
+    if (res.code === 0) {
+      const cateListData = res.data.cateList;
+      commit(GET_CATELIST_DATA, {cateListData});
+      typeof cb === 'function' && cb();
+    }
+  },
+  //解决加载nav
+  async waitData ({commit},cb) {
+    const res = await reqHomeData();
+    if (res.code === 0) {
+      const cateListData = res.data.cateList;
+      typeof cb === 'function' && cb();
+    }
+  },
 }

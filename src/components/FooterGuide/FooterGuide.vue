@@ -2,7 +2,7 @@
   <footer>
     <ul class="footerList">
       <li @click="goto('/home')" >
-        <a href="javascript:;" :class="{active: $route.path === '/home'}"><i class="iconfont icon-shouye2"></i>
+        <a href="javascript:;" :class="{active: homePath}"><i class="iconfont icon-shouye2"></i>
           首页
         </a></li>
       <li @click="goto('/discernGoods')">
@@ -22,12 +22,26 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
+    computed: {
+      ...mapState(['homePath'])
+    },
     methods: {
       goto(path) {
-        this.$router.push(path)
+        if (path === '/home') {
+          this.$store.state.homePath = true;
+        } else {
+          this.$store.state.homePath = false;
+        }
+        this.$router.push(path);
+
       },
     },
+    props: {
+
+
+    }
   }
 </script>
 

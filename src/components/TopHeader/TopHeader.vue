@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <a href="javascript:;" class="home">
-      <i class="iconfont icon-shouye2" @click="$router.push('/home')"></i>
+      <i class="iconfont icon-shouye2" @click="goHome"></i>
     </a>
     <h1 class="logo">
       <img src="../../common/images/indexLogo-11d65342f9.png" alt="">
@@ -16,7 +16,14 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    methods: {
+      goHome () {
+        this.$router.push('/home');
+        this.$store.state.homePath = true;
+      }
+    }
+  }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>

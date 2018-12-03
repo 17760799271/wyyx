@@ -1,5 +1,5 @@
 <template>
-  <div class="category">
+  <div class="category" v-if="categoryData[itemIndex]">
     <header class="header">
       <div class="search">
         <img src="../../common/images/search.png" alt="">
@@ -17,12 +17,14 @@
         <div class="title">
           <span>-- {{getTitle}} --</span>
         </div>
-        <ul class="contentList">
-          <li v-if="categoryData" v-for="(item, index) in categoryData[itemIndex].subCateList" :key="index">
-            <img :src="item.bannerUrl"> <br>
+        <div class="contentListScroll">
+          <ul class="contentList">
+          <li v-for="(item, index) in categoryData[itemIndex].subCateList" :key="index">
+            <img :src="item.wapBannerUrl"> <br>
             <span class="ellipsis">{{item.name}}</span>
           </li>
         </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -35,7 +37,6 @@
     data () {
       return {
         itemIndex: 0,
-
       }
     },
     mounted () {
@@ -44,24 +45,18 @@
     computed: {
       ...mapState(['categoryData']),
       subCateList () {
-
           let cateList = [];
           const {itemIndex, categoryData} = this;
           cateList = categoryData[itemIndex].subCateList;
           return cateList;
-
-
-
       },
       //获取当前index标题图片
       getTitleImg () {
-
         const {itemIndex, categoryData} = this;
           return categoryData[itemIndex].bannerUrl
       },
       //获取当前index标题文字
       getTitle () {
-
         const {itemIndex, categoryData} = this;
         return categoryData[itemIndex].name
       }
@@ -72,6 +67,13 @@
         this.$store.dispatch('getCategoryData', () => {
           this.$nextTick(() => {
             new BScroll('.listScroll',{
+              scrollY: true,
+              click: true
+            });
+          });
+          //右侧ul拖拽
+          this.$nextTick(() => {
+            new BScroll('.contentListScroll',{
               scrollY: true,
               click: true
             });
@@ -140,7 +142,12 @@
           >span
             font-size px2rem(28)
             line-height px2rem(80)
+      .contentListScroll
+        height px2rem(820)
+        overflow hidden
         .contentList
+          width 100%
+          clearFix()
           li
             display flex
             flex-direction column

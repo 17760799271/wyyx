@@ -4,6 +4,7 @@ import {
   GET_BANNER_DATA,
   GET_TOPIC_DATA,
   GET_CATEGORY_DATA,
+  GET_CATELIST_DATA,
   
 } from './mutation-type'
 
@@ -24,5 +25,10 @@ export default {
   //获取分类数据
   [GET_CATEGORY_DATA] (state,{categoryData}) {
     state.categoryData = categoryData;
+  },
+  //获取分类数据
+  [GET_CATELIST_DATA] (state,{cateListData}) {
+    state.cateListData = cateListData;
+    // console.log(state.cateListData);
   },
 }

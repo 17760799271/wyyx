@@ -4,7 +4,7 @@
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(banner ,index) in topicData.banner" :key="index">
-            <img :src="banner.picUrl" alt="">
+            <img v-lazy="banner.picUrl" alt="">
           </div>
         </div>
       </div>
@@ -12,19 +12,19 @@
       <div class="nav">
         <ul class="navList">
           <li v-for="(article, index) in topicData.column" :key="index">
-            <img :src="article.picUrl" alt=""> <br>
+            <img v-lazy="article.picUrl" alt=""> <br>
             <span>{{article.title}}</span>
           </li>
         </ul>
       </div>
       <Piece/>
       <div class="recommendCard">
-        <div class="recommend">
-          <div class="forYou" v-if="topicData.recommend.name">{{topicData.recommend.name}}</div>
+        <div class="recommend" v-if="topicData.recommend">
+          <div class="forYou">{{topicData.recommend.name}}</div>
           <div class="content" v-if=" topicData.recommend.Item && index<1" v-for="(topic, index) in topicData.recommend.Item" :key="index">
             <div class="imgText">
               <span>{{topic.nickname}}</span>
-              <img :src="topic.picUrl" alt="">
+              <img v-lazy="topic.picUrl" alt="">
             </div>
             <div class="footer">
               <p>{{topic.subTitle}}</p>
@@ -33,12 +33,12 @@
           </div>
           <div class="card" v-if="index>0 && topicData.recommend.Item" v-for="(topic, index) in topicData.recommend.Item" :key="index" >
             <div class="cardText">
-              <img :src="topic.avatar"><span>{{topic.nickname}}</span>
+              <img v-lazy="topic.avatar"><span>{{topic.nickname}}</span>
               <h2>{{topic.title}}</h2>
               <p class="ellipsis ">{{topic.subTitle}}</p>
             </div>
             <div class="cardImg">
-              <img :src="topic.picUrl" alt="">
+              <img v-lazy="topic.picUrl" alt="">
             </div>
         </div>
         </div>
@@ -55,7 +55,7 @@
               <p>{{what.desc}}</p>
               <ul class="userList">
                 <li>
-                  <img :src="imgUrl" alt="" v-for="(imgUrl, index) in what.participantAvatar">
+                  <img v-lazy="imgUrl" alt="" v-for="(imgUrl, index) in what.participantAvatar">
                   <span v-if="what.participantAvatar.length">{{what.participantAvatar.length}}人参与会话</span>
                 </li>
               </ul>
@@ -84,7 +84,7 @@
       </div>
       <ul class="shopList">
         <li v-for="(shop, index) in topicData.yxWeek" :key="index">
-          <img :src="shop.itemPicUrl" alt="">
+          <img v-lazy="shop.itemPicUrl" alt="">
           <span>{{shop.title}}</span>
         </li>
       </ul>
@@ -111,7 +111,7 @@
       ...mapState(['topicData'])
     },
     methods: {
-      //初始化轮播图/滑动
+      //初始化轮播图/滑动 eventPassthrough   vertical
       _bannerInit () {
         this.$store.dispatch('getTopicData', () => {
           this.$nextTick(() => {
@@ -129,7 +129,7 @@
           });
           this.$nextTick(() => {
             new BScroll('#discernGoods', {
-              click: true
+              click: true,
             });
           });
           this.$nextTick(() => {
@@ -149,11 +149,15 @@
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   @import "../../common/stylus/mixins.styl"
   #discernGoods
-    width 100%
-    height: px2rem(1086)
+    width: 100%
+    height px2rem(1137)
+    overflow hidden
     padding-top px2rem(97)
     .discernGoods
-      width 100%
+      width: 100%
+      position absolute
+      top: 0
+      left: 0
       padding-top px2rem(97)
       .swiper-container
         padding px2rem(26) 0
@@ -179,10 +183,10 @@
             margin-left px2rem(33)
             float left
             &:first-child
-              margin-left px2rem(0)
+              margin-left 0
             img
               width 100%
-              height 100%
+              height px2rem(178)
             span
               color #333333
               font-size px2rem(24)

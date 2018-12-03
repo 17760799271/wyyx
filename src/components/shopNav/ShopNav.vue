@@ -3,7 +3,7 @@
     <ul class="navList">
       <li v-for="(item, index) in itemList" :key="index">
         <div class="shopImg">
-          <img :src="item.listPicUrl">
+          <img v-lazy="item.listPicUrl">
         </div>
         <div class="shopDetails">
           <p class="ellipsis">{{item.name}}</p>

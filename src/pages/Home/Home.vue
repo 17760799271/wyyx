@@ -11,28 +11,67 @@
       </div>
       <div class="headerNav">
         <ul class="navList">
-          <li :class="{active: $route.path === '/home'}">
+          <li :class="{active: $route.path === '/home/homepage'}" >
             <router-link to="/home">
               <span>推荐</span>
             </router-link>
           </li>
-          <li><span>居家</span></li>
-          <li class="shoe"><span>鞋包配饰</span></li>
-          <li><span>服装</span></li>
-          <li><span>电器</span></li>
-          <li><span>洗护</span></li>
-          <li><span>饮食</span></li>
-          <li><span>餐厨</span></li>
-          <li><span>婴童</span></li>
-          <li><span>文体</span></li>
-          <li class="shoe"><span>特色区</span></li>
+          <li :class="{active: $route.path === '/home/homeNav/0'}">
+            <router-link to="/home/homeNav/0">
+              <span>居家</span>
+            </router-link>
+          </li>
+          <li class="shoe" :class="{active: $route.path === '/home/homeNav/1'}">
+            <router-link to="/home/homeNav/1">
+              <span>鞋包配饰</span>
+            </router-link>
+          </li>
+          <li :class="{active: $route.path === '/home/homeNav/2'}">
+            <router-link to="/home/homeNav/2">
+              <span>电器</span>
+            </router-link>
+          </li>
+          <li :class="{active: $route.path === '/home/homeNav/3'}">
+            <router-link to="/home/homeNav/3">
+              <span>洗护</span>
+            </router-link>
+          </li>
+          <li :class="{active: $route.path === '/home/homeNav/4'}">
+            <router-link to="/home/homeNav/4">
+              <span>饮食</span>
+            </router-link>
+          </li>
+          <li :class="{active: $route.path === '/home/homeNav/5'}">
+            <router-link to="/home/homeNav/5">
+              <span>餐厨</span>
+            </router-link>
+          </li>
+          <li :class="{active: $route.path === '/home/homeNav/6'}">
+            <router-link to="/home/homeNav/6">
+              <span>婴童</span>
+            </router-link>
+          </li>
+          <li :class="{active: $route.path === '/home/homeNav/7'}">
+            <router-link to="/home/homeNav/7">
+              <span>文体</span>
+            </router-link>
+          </li>
+          <li :class="{active: $route.path === '/home/homeNav/8'}">
+            <router-link to="/home/homeNav/8">
+              <span>服装</span>
+            </router-link>
+          </li>
+          <li class="shoe" :class="{active: $route.path === '/home/homeNav/9'}">
+            <router-link to="/home/homeNav/9">
+              <span>特色区</span>
+            </router-link>
+          </li>
         </ul>
         <div class="arrows">
-
         </div>
       </div>
     </header>
-      <Homepage/>
+    <router-view/>
   </section>
 </template>
 
@@ -43,8 +82,15 @@
     mounted () {
       this.$nextTick(() => {
         this._navScroll();
-      })
+      });
+      if (this.$route.path === '/home/homepage') {
+        this.$store.state.homePath = true;
+      }
+    },
+    data () {
+      return {
 
+      }
     },
     components: {
       Homepage
@@ -56,7 +102,8 @@
           scrollY: false,
           click: true
         });
-      }
+      },
+
     }
   }
 </script>

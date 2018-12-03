@@ -30,7 +30,7 @@
         <span v-show="isShow === 2" class="right">忘记密码</span>
       </div>
       <button class="active" @click="login">登录</button>
-      <button @click="isShow = 0">其他账号登录</button>
+      <button @click="choose">其他账号登录</button>
       <span v-if="isShow === 1">注册账号</span>
     </div>
     <div class="loginMethods">
@@ -88,7 +88,7 @@
         let {phone, code, email, password, isShow, errMsg} = this;
         if (isShow === 1) {
           if (!phone) {
-            this.errMsg = '请输入手机号!';
+            this.errMsg = '请输入做正确的手机号!';
             return;
           } else if (!code) {
             this.errMsg = '请输入手机验证码!';
@@ -96,15 +96,21 @@
           }
         } else if (isShow === 2){
           if (!email) {
-            errMsg = '请输入邮箱!';
+            this.errMsg = '请输入邮箱!';
             return;
           } else if (!password) {
-            errMsg = '请输入密码！';
+            this.errMsg = '请输入密码！';
             return;
           }
         }
         this.errMsg = null;
-      }
+      },
+      //切换登录方式
+      choose () {
+        this.isShow = 0;
+        this.errMsg = null;
+      },
+
     }
   }
 </script>

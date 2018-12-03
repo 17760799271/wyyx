@@ -24,15 +24,13 @@
         </div>
         <ul class="shopDetail">
           <li v-for="(tag ,index) in getTagList" :key="index">
-            <img :src="tag.picUrl">
+            <img v-lazy="tag.picUrl">
             <div class="shopVender">
               <span>{{tag.name}}</span> <br>
               <span>{{tag.floorPrice}}元起</span>
             </div>
           </li>
-
         </ul>
-
       </div>
       <Piece/>
       <Board title="新品首发"/>
@@ -70,7 +68,7 @@
         <div class="siftScroll">
           <ul class="siftList">
             <li v-for="(shop, index) in homeData.topicList" :key="shop.id">
-              <img :src="shop.itemPicUrl">
+              <img v-lazy="shop.itemPicUrl">
               <div class="detail">
                 <span>{{shop.title}}</span>
                 <span class="red">{{shop.priceInfo}}元起</span>
@@ -86,7 +84,7 @@
         <div class="title">{{shops.name}}</div>
         <ul class="goodsList">
           <li v-for="(shop, index) in shops.itemList" :key="shop.index">
-            <img :src="shop.listPicUrl" alt="">
+            <img v-lazy="shop.listPicUrl" alt="">
             <div class="shopIntroduce ellipsis">
               {{shop.simpleDesc}}
             </div>
@@ -208,13 +206,13 @@
         img
           width px2rem(355)
           height px2rem(236)
+          position relative
+          z-index 5
         .shopVender
           position absolute
           top: px2rem(10)
           left: px2rem(10)
           font-size px2rem(28)
-
-
     .limitTime
       height px2rem(441)
       box-sizing border-box
@@ -313,13 +311,13 @@
         width 100%
         >li
           float left
-          width 50%
+          width 47%
           height px2rem(592)
-          padding 0 px2rem(11) px2rem(36)
+          margin 0 px2rem(11) px2rem(36) px2rem(11)
           box-sizing border-box
           font-size px2rem(34)
           img
-            width px2rem(380)
+            width 100%
             height px2rem(380)
           .shopIntroduce
             width 100%
