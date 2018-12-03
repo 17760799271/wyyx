@@ -25,15 +25,19 @@
   import BScroll from 'better-scroll'
   export default {
     mounted () {
-
-    },
-    watch: { //使用监视接收数据。 网速卡会影响拖动。
-      navListData () {
-        this.$nextTick(() => {
-          new BScroll('.homeNavContentScroll', {
-            click: true,
-          });
+      this.$nextTick(() => {
+        new BScroll('.homeNavContentScroll', {
+          click: true,
         });
+      });
+    },
+    watch: { //使用监视接收数据。 网速卡会影响拖动。改为mounted
+      navListData () {
+//        this.$nextTick(() => {
+//          new BScroll('.homeNavContentScroll', {
+//            click: true,
+//          });
+//        });
       }
     },
     props: {
