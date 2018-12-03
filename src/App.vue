@@ -1,6 +1,10 @@
 <template>
   <div class="app">
+  <!--<keep-alive>-->
     <router-view/>
+  <!--</keep-alive>-->
+
+
     <FooterGuide v-if="$route.meta.isShowFooter"/>
   </div>
 </template>
@@ -17,7 +21,6 @@
     methods: {
       initFooterClass () {
         if (this.$route.path != '/home/homepage') {
-          console.log(1111);
           this.$store.state.homePath = false;
         }
       }

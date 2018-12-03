@@ -1,13 +1,13 @@
 <template>
   <div class="homeNavContentScroll" v-if="navListData">
-    <div v-if="navListData" class="homeNavContent">
+    <div class="homeNavContent">
       <div class="titleImg">
         <img v-if="navListData.bannerUrl" :src="navListData.bannerUrl" alt="">
       </div>
       <div class="goodThings">
-        <div class="title">{{navListData.name}}</div>
+        <div class="title" v-if="navListData.name">{{navListData.name}}</div>
         <ul class="goodsList">
-          <li v-for="(item, index) in navListData.itemList" :key="item.index">
+          <li v-if="navListData.itemList" v-for="(item, index) in navListData.itemList" :key="item.index">
             <img :src="item.listPicUrl" alt="">
             <div class="shopIntroduce ellipsis">
               {{item.simpleDesc}}
@@ -27,7 +27,7 @@
     mounted () {
 
     },
-    watch: { //使用监视接收数据。
+    watch: { //使用监视接收数据。 网速卡会影响拖动。
       navListData () {
         this.$nextTick(() => {
           new BScroll('.homeNavContentScroll', {

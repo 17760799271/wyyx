@@ -4,7 +4,7 @@
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(banner ,index) in topicData.banner" :key="index">
-            <img v-lazy="banner.picUrl" alt="">
+            <img :src="banner.picUrl" alt="">
           </div>
         </div>
       </div>

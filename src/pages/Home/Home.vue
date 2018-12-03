@@ -71,7 +71,14 @@
         </div>
       </div>
     </header>
-    <router-view/>
+    <!--<keep-alive>-->
+      <router-view/>
+    <!--</keep-alive>-->
+
+
+
+
+
   </section>
 </template>
 

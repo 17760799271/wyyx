@@ -1,6 +1,6 @@
 <template>
   <div class="homeNavScroll">
-    <div class="homeNav">
+    <div class="homeNav" v-if="cateListData[navPath]">
       <HomeNavContent :navListData="cateListData[navPath]"/>
     </div>
   </div>
